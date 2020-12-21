@@ -10,7 +10,9 @@ const Search = () => {
   const [link, setLink] = useState('');
   const [short, setShort] = useState('');
 
+  // Link Validation Function
   const checkLink = (string) => {
+    // Regex to check if string is a valid URL
     const res = string.match(
       /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g
     );
@@ -21,6 +23,7 @@ const Search = () => {
     }
   };
 
+  // Function that calls the API if link is valid
   const getLink = async () => {
     await shrtcode
       .get(`shorten?url=${link}`)
@@ -28,16 +31,22 @@ const Search = () => {
         setShort(response.data.result.short_link);
       })
       .catch((error) => {
-        setShort('Please add a Vaild Link');
+        console.error(error);
       });
   };
 
   return (
     <>
-      <Label htmlFor=''>Long Link Here:</Label>
-      <Input type='text' onChange={(e) => setLink(e.target.value)} />
+      <Label htmlFor='input'>Long Link Here:</Label>
+      <Input id='input' type='text' onChange={(e) => setLink(e.target.value)} />
       <Button onClick={() => checkLink(link)}>Get Link</Button>
-      {short && <DisplayLink shortend={short} />}
+      {short && (
+        <>
+          <h2>Short Link:</h2>
+
+          <DisplayLink shortend={short} />
+        </>
+      )}
     </>
   );
 };

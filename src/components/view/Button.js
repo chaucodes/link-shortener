@@ -2,16 +2,23 @@ import styled from 'styled-components';
 
 export const Button = styled.a`
   display: inline-block;
-  border-radius: 3px;
+  border-radius: 5px;
   padding: 0.5rem 0;
-  margin: 0.5rem 1rem;
+  margin: 1rem 1rem;
   width: 11rem;
-  background: gray;
-  color: black;
-  border: 2px solid white;
+  background: #222831;
+  color: white;
+  border: none;
   cursor: pointer;
+  outline: none;
+  font-size: 20px;
 
   :active {
-    transform: translateY(0.9px);
+    transform: translateY(2px);
+    transition: transform 0.2s ease;
+  }
+
+  :hover {
+    transform: scale(1.1);
   }
 `;
