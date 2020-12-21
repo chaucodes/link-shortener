@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Button = styled.a`
+export const Button = styled.input`
   display: inline-block;
   border-radius: 5px;
   padding: 0.5rem 0;
